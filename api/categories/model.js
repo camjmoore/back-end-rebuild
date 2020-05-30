@@ -16,7 +16,7 @@ const addCategory = (category) => {
 }
 
 const editCategories = (changes, id) => {
-  return db('categories').where({id}).update(changes);
+  return db('categories').where({ id }).update(changes);
 }
 
 const deleteCategory = (id) => {
