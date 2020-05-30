@@ -1,20 +1,28 @@
-/** SERVER */
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
+
+/** SERVER */
 const server = express();
 
 /** ROUTERS */
 const authRouter = require('./auth/router')
+const recipesRouter = require('./recipes/router')
 const categoriesRouter = require('./categories/router')
 const ingredientsRouter = require('./ingredients/router')
 const instructionsRouter = require('./instructions/router')
-const recipesRouter = require('./recipes/router')
-
 
 /** MIDDLEWARE */
-// defaults all responses to JSON
 server.use(express.json());
+server.use(helmet());
+server.use(cors());
+
+/** ROUTES */
+server.use('api/auth', authRouter)
+server.use('api/recipes', recipesRouter)
+server.use('api/categories', categoriesRouter)
+server.use('api/ingredients', ingredientsRouter)
+server.use('api/instructions', instructionsRouter)
 
 // first available endpoint
 server.get('/', (req, res) => {
