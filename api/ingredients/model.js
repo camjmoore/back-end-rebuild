@@ -13,7 +13,7 @@ const getIngredients = () => {
   return db('ingredients');
 }
 
- /** SAVE AN INGREDIENT */
+/** SAVE AN INGREDIENT */
 const addIngredients = (ingredient) => {
   return db('ingredients').insert(ingredient);
 }

@@ -2,9 +2,9 @@ const db = require('../../database/dbconfig');
 
 module.exports = {
   getUsers,
-  addUsers,
-  editUsers,
-  deleteUsers,
+  register,
+  findBy,
+  deleteUser,
 }
 
 /** GET ALL USERS */
@@ -13,16 +13,16 @@ const getUsers = () => {
 }
 
  /** SAVE AN USERS */
-const addUsers = (users) => {
+const register = (users) => {
   return db('users').insert(users);
 }
 
 /** CHANGE AN USERS */
-const editUsers = (changes, id) => {
-  return db('users').where({ id }).update(changes);
+const findBy = (changes, id) => {
+  return db('users').select('id', 'username', 'password').where(filter);
 }
 
 /** DELETE AN USERS */
-const deleteUsers = (id) => {
+const deleteUser = (id) => {
   return db('users').where({ id }).del();
 }
