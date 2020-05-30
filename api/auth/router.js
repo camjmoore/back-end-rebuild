@@ -12,3 +12,5 @@ const router = express.Router();
 
 /** DELETE REQUEST */
 
+module.exports = router
+
