@@ -17,8 +17,8 @@ const register = (users) => {
   return db('users').insert(users);
 }
 
-/** CHANGE AN USERS */
-const findBy = (changes, id) => {
+/** FIND A USER */
+const findBy = (filter) => {
   return db('users').select('id', 'username', 'password').where(filter);
 }
 

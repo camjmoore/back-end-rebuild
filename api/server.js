@@ -24,7 +24,7 @@ server.use('api/categories', categoriesRouter)
 server.use('api/ingredients', ingredientsRouter)
 server.use('api/instructions', instructionsRouter)
 
-// first available endpoint
+/** ALPHA END-POINT */
 server.get('/', (req, res) => {
 // message to confirm the server is running
   res.status(200).json({ 'api': 'is runnning' })
