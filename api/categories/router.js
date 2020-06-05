@@ -34,11 +34,15 @@ router.put('/:id', (req, res) => {
   const id = req.params.id;
 
   Categories.editCategories(changes, id)
-    .then(cat => {
-      res.status(200).json({ success: "Category was succcessfully updatede", ...changes })
+    .then(updated => {
+      if (updated) {
+        res.status(200).json({ success: "Category was succcessfully updated", ...changes })
+      } else {
+        res.status(500).json({ message: "There was an error updating the category"})
+      }
     })
     .catch(error => {
-      res.status(400).json({ error: "the changes could not be saved"})
+      res.status(400).json({ error: "The changes could not be saved"})
     })
 })
 
@@ -48,7 +52,11 @@ router.delete('/:id', (req, res) => {
 
   Categories.deleteCategory(id)
     .then(del => {
-      res.status(200).json({ success: "Category was successfully deleted" })
+      if (del) {
+        res.status(200).json({ success: "Category was successfully deleted" })
+      } else {
+        res.status(500).json({ message: "There was an error deleting the category" })
+      }
     })
     .catch(err => {
       res.status(400).json({ error: "The category could not be deleted" })
