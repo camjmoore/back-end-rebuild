@@ -41,19 +41,19 @@ router.post('/register', (req, res) => {
 
 /** POST REQUEST */
 router.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    Users.findBy({ username })
+    const { user_name, password } = req.body;
+    Users.findBy({ user_name })
         .first()
         .then(user => {
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = jwt.generateToken(user);
-                res.status(201).json({ success: 'You have logged in.', id: user.id, username: user.username, token });
+                res.status(201).json({ success: 'You have logged in.', id: user.id, username: user.user_name, token });
             }
             else {
                 res.status(401).json({ error: 'Incorrect username or password. Try again.' });
             }
         })
-        .catch(err => {
+        .catch(error => {
             res.status(500).json({ error: 'Something went wrong.' });
         })
 });
