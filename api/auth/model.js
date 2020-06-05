@@ -12,7 +12,7 @@ const getUsers = () => {
   return db('users');
 }
 
- /** SAVE AN USERS */
+ /** CREATE A USER */
 const register = (users) => {
   return db('users').insert(users);
 }
@@ -22,7 +22,7 @@ const findBy = (filter) => {
   return db('users').select('id', 'username', 'password').where(filter);
 }
 
-/** DELETE AN USERS */
+/** DELETE A USER */
 const deleteUser = (id) => {
   return db('users').where({ id }).del();
 }

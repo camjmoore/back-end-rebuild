@@ -1,8 +1,10 @@
-const express = require('express')
+const express = require('express');
 
-const Users = require('./model')
+const Users = require('./model');
 
 const router = express.Router();
+
+const jwt = require('../../utils/generateToken.js');
 
 /** GET REQUEST */
 router.get('/', (req, res) => {
