@@ -8,22 +8,22 @@ module.exports = {
 }
 
 /** GET ALL CATEGORIES */
-const getCategories = () => {
+function getCategories() {
   return db('categories');
 }
 
 /**ADD A CATEGORY */
-const addCategory = (category) => {
+function addCategory(category) {
   return db('categories').insert(category, 'id');
 }
 
 /** CHANGE A CATEGORY */
-const editCategories = (changes, id) => {
+function editCategories(changes, id) {
   return db('categories').where({ id }).update(changes);
 }
 
 /** DELETE A CATEGORY */
-const deleteCategory = (id) => {
+function deleteCategory(id) {
   return db('categories').where({ id }).del();
 }
 

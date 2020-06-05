@@ -1,7 +1,6 @@
 const db = require('../../database/dbconfig');
 
 module.exports = {
-  getRecipeIngredients,
   getIngredients,
   addIngredients,
   editIngredient,
@@ -9,21 +8,21 @@ module.exports = {
 }
 
 /** GET ALL INGREDIENTS */
-const getIngredients = () => {
+function getIngredients() {
   return db('ingredients');
 }
 
 /** SAVE AN INGREDIENT */
-const addIngredients = (ingredient) => {
+function addIngredients(ingredient) {
   return db('ingredients').insert(ingredient);
 }
 
 /** CHANGE AN INGREDIENT */
-const editIngredient = (changes, id) => {
+function editIngredient(changes, id) {
   return db('ingredients').where({ id }).update(changes);
 }
 
 /** DELETE AN INGREDIENT */
-const deleteIngredient = (id) => {
+function deleteIngredient(id) {
   return db('ingredients').where({ id }).del();
 }

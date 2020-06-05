@@ -8,21 +8,21 @@ module.exports = {
 }
 
 /** GET ALL INSTRUCTIONS */
-const getInstructions = () => {
+function getInstructions () {
   return db('Instructions');
 }
 
  /** SAVE AN INSTRUCTION */
-const addInstructions = (instruction) => {
+function addInstructions (instruction) {
   return db('Instructions').insert(instruction);
 }
 
 /** CHANGE AN INSTRUCTION */
-const editInstructions = (changes, id) => {
+function editInstructions (changes, id) {
   return db('Instructions').where({ id }).update(changes);
 }
 
 /** DELETE AN INSTRUCTION */
-const deleteInstructions = (id) => {
+function deleteInstructions (id) {
   return db('Instructions').where({ id }).del();
 }
