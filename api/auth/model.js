@@ -19,7 +19,7 @@ function register(user) {
 
 /** FIND A USER */
 function findBy(filter) {
-  return db('users').select('id', 'username', 'password').where(filter);
+  return db('users').select('id', 'user_name', 'password').where(filter);
 }
 
 /** DELETE A USER */

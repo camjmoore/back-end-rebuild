@@ -8,11 +8,10 @@ module.exports = {
   deleteRecipe,
   getRecipeInstructions,
   getRecipeIngredients,
-  getRecipeCategorizations,
+  getRecipeCategorizations
 }
 
 /** GET ALL RECIPES */
-
 function getRecipes() {
   return db('recipes');
 }

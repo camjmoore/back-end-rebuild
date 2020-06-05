@@ -6,7 +6,7 @@ const cors = require('cors');
 const server = express();
 
 /** ROUTERS */
-const authRouter = require('./auth/router.js')
+const authRouter = require('./auth/authRouter.js')
 const recipesRouter = require('./recipes/router')
 const categoriesRouter = require('./categories/router')
 const ingredientsRouter = require('./ingredients/router')

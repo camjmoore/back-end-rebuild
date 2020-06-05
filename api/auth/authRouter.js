@@ -30,16 +30,17 @@ router.post('/register', (req, res) => {
     .then(newUser => {
       res.status(201).json({
         id: newUser[0],
-        username: user.username,
+        username: user.user_name,
         token
       })
     })
     .catch(error =>
-      res.status(400).json({"error": error})
+      res.status(400).json({ msg: error.message })
     )
 })
 
-/** POST REQUEST */router.post('/login', (req, res) => {
+/** POST REQUEST */
+router.post('/login', (req, res) => {
     const { username, password } = req.body;
     Users.findBy({ username })
         .first()
