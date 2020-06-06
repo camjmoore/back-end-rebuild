@@ -21,7 +21,7 @@ server.use(cors());
 server.use('/api/auth', authRouter)
 server.use('/api/recipes', recipesRouter)
 // server.use('/api/categories', categoriesRouter)
-// server.use('/api/ingredients', ingredientsRouter)
+server.use('/api/ingredients', ingredientsRouter)
 // server.use('/api/instructions', instructionsRouter)
 
 /** ALPHA END-POINT */

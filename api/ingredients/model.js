@@ -2,7 +2,7 @@ const db = require('../../database/dbconfig');
 
 module.exports = {
   getIngredients,
-  addIngredients,
+  addIngredient,
   editIngredient,
   deleteIngredient,
 }
@@ -13,7 +13,7 @@ function getIngredients() {
 }
 
 /** SAVE AN INGREDIENT */
-function addIngredients(ingredient) {
+function addIngredient(ingredient) {
   return db('ingredients').insert(ingredient);
 }
 
