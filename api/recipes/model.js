@@ -66,7 +66,7 @@ function getRecipeCategorizations(id) {
 
 function getRecipeByUserId(id) {
   return db('users as u')
-    .join('recipes as r', 'r.users_id', 'u.id' )
+    .join('recipes as r', 'r.users_id', 'u.id')
     .where({ users_id: id })
-    .select('r.*')
+    .select('r.*');
 }

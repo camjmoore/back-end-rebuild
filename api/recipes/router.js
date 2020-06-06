@@ -35,10 +35,12 @@ router.put('/:id', (req, res) => {
 
 /** POST REQUEST */
 router.post('/', (req, res) => {
-  Recipes.addRecipe()
+  const recipe = req.body
+
+  Recipes.addRecipe(recipe)
     .then(recipes => {
       if (recipes) {
-        res.status(200).json(recipes)
+        res.status(200).json({ message: "new recipe created", recipe_id: recipes[0], title: recipes[1]})
       } else {
         res.status(500).json({error: "there was an error creating the recipe"})
       }
@@ -59,7 +61,7 @@ router.delete('/:id', (req, res) => {
       }
     })
     .catch(error => {
-      req.status(400).json({ message: "The recipe could not be deleted" })
+      res.status(400).json({ message: "The recipe could not be deleted" })
     })
 })
 

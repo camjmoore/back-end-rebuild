@@ -61,12 +61,27 @@ router.post('/login', (req, res) => {
 /** DELETE REQUEST */
 router.delete('/:id', (req, res) => {
   const id = req.params.id;
+
   Users.deleteUser(id)
   .then(del => {
     res.status(200).json({ "success": `User ${id} has been successfully deleted` })
   })
   .catch(error =>
     res.status(400).json({ "error": `Unable to delete user ${id}` })
+  )
+})
+
+/** GET A USERS RECIPES */
+
+router.get('/:id/recipes', (req, res) => {
+  const id = req.params.id;
+
+  Users.getUsersRecipes(id)
+  .then(recipes => {
+    res.status(200).json(recipes)
+  })
+  .catch(error =>
+    res.status(400).json({ "error": `Unable to find recipes for user ${id}` })
   )
 })
 

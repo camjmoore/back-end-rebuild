@@ -4,7 +4,8 @@ module.exports = {
   getUsers,
   register,
   findBy,
-  deleteUser
+  deleteUser,
+  getUsersRecipes,
 }
 
 /** GET ALL USERS */
@@ -25,4 +26,12 @@ function findBy(filter) {
 /** DELETE A USER */
 function deleteUser(id) {
   return db('users').where({ id }).del();
+}
+
+/** GET RECIPES BY USER ID */
+function getUsersRecipes(id) {
+  return db('users as u')
+    .join('recipes as r', 'r.users_id', 'u.id')
+    .where({ users_id: id })
+    .select('r.*');
 }
