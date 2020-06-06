@@ -8,7 +8,8 @@ module.exports = {
   deleteRecipe,
   getRecipeInstructions,
   getRecipeIngredients,
-  getRecipeCategorizations
+  getRecipeCategorizations,
+  //getRecipeByUserId ?
 }
 
 /** GET ALL RECIPES */
@@ -61,4 +62,11 @@ function getRecipeCategorizations(id) {
     .join('categorizations as cats', 'cats.id', 'rcats.category_id')
     .where({ recipe_id: id })
     .select('cats.*');
+}
+
+function getRecipeByUserId(id) {
+  return db('users as u')
+    .join('recipes as r', 'r.users_id', 'u.id' )
+    .where({ users_id: id })
+    .select('r.*')
 }
