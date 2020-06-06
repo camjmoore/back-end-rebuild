@@ -8,10 +8,14 @@ const router = express.Router();
 router.get('/', (req, res) => {
   Categories.getCategories()
   .then(cats => {
-    res.status(200).json(cats);
+    if (cats) {
+      res.status(200).json(cats);
+    } else {
+      res.status(400).json({ message: "The categories could not be retrieved" })
+    }
   })
   .catch(error => {
-    res.status(400).json({ error: "The categories could not be retrieved" })
+    res.status(500).json({ error: "There was an error retrieving the categories" })
   })
 })
 
@@ -55,11 +59,11 @@ router.delete('/:id', (req, res) => {
       if (del) {
         res.status(200).json({ success: "Category was successfully deleted" })
       } else {
-        res.status(500).json({ message: "There was an error deleting the category" })
+        res.status(500).json({ error: "There was an error deleting the category" })
       }
     })
     .catch(err => {
-      res.status(400).json({ error: "The category could not be deleted" })
+      res.status(400).json({ message: "The category could not be deleted" })
     })
 })
 
