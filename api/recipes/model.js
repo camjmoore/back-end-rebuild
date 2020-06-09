@@ -41,7 +41,7 @@ function deleteRecipe(id) {
 function getRecipeIngredients(id) {
   return db('recipe_ingredients as ring')
     .join('recipes as r', 'r.id', 'ring.recipe_id')
-    .join('ingredients as ing', 'ing.id', 'ri.ingredients_id')
+    .join('ingredients as ing', 'ing.id', 'ring.ingredients_id')
     .where({ recipe_id: id })
     .select('ing.*');
 }
@@ -58,7 +58,7 @@ function getRecipeInstructions(id) {
 /**GET A RECIPES CATEGORIZATION */
 function getRecipeCategorizations(id) {
   return db('recipe_categorizations as rcats')
-    .join('recipes as r', 'r.id', 'rcat.recipe_id' )
+    .join('recipes as r', 'r.id', 'rcats.recipe_id' )
     .join('categorizations as cats', 'cats.id', 'rcats.category_id')
     .where({ recipe_id: id })
     .select('cats.*');

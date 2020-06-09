@@ -65,4 +65,16 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+router.get('/:id/ingredients', (req, res) => {
+  const id = req.params.id
+
+  Recipes.getRecipeIngredients(id)
+    .then(recipes => {
+      res.status(200).json(recipes)
+    })
+    .catch(error => {
+      res.status(500).json({ error: "There was an error retrieving ingredients for this recipe" })
+    })
+})
+
 module.exports = router
