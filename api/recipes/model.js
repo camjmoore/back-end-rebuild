@@ -59,14 +59,7 @@ function getRecipeInstructions(id) {
 function getRecipeCategorizations(id) {
   return db('recipe_categorizations as rcats')
     .join('recipes as r', 'r.id', 'rcats.recipe_id' )
-    .join('categorizations as cats', 'cats.id', 'rcats.category_id')
+    .join('categories as cats', 'cats.id', 'rcats.category_id')
     .where({ recipe_id: id })
     .select('cats.*');
-}
-
-function getRecipeByUserId(id) {
-  return db('users as u')
-    .join('recipes as r', 'r.users_id', 'u.id')
-    .where({ users_id: id })
-    .select('r.*');
 }

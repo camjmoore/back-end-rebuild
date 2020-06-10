@@ -65,16 +65,57 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+/** GET A RECIPES INGREDIENTS */
 router.get('/:id/ingredients', (req, res) => {
   const id = req.params.id;
 
   Recipes.getRecipeIngredients(id)
-    .then(recipes => {
-      res.status(200).json(recipes)
+    .then(ingreds => {
+      if (ingreds) {
+        res.status(200).json(ingreds)
+      } else {
+        res.status(400).json({ message: "The ingredients for this recipe could not be retrieved" })
+      }
     })
     .catch(error => {
       res.status(500).json({ error: "There was an error retrieving ingredients for this recipe" })
     })
 })
+
+/** GET A RECIPES INSTRUCTIONS */
+router.get('/:id/instructions', (req, res) => {
+  const id = req.params.id;
+
+  Recipes.getRecipeInstructions(id)
+    .then(instr => {
+      if (instr) {
+        res.status(200).json(instr)
+      } else {
+        req.status(400).json({ message: "The instructions for this recipe could not be retrieved" })
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ error: "There was an error retrieving instructions for this recipe" })
+    })
+})
+
+/** GET A RECIPES CATEGORIES */
+router.get('/:id/categories', (req, res) => {
+  const id = req.params.id;
+
+  Recipes.getRecipeCategorizations(id)
+    .then(cats => {
+      if (cats) {
+        res.status(200).json(cats)
+      } else {
+        res.status(400).json({ message: "The categories for this recipe could not be retrieved" })
+      }
+    })
+    .catch(error => {
+      res.status(500).json({ error: "There was an error retrieving categories for this recipe" })
+    })
+})
+
+
 
 module.exports = router
