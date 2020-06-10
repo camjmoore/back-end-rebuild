@@ -66,7 +66,7 @@ router.delete('/:id', (req, res) => {
 })
 
 router.get('/:id/ingredients', (req, res) => {
-  const id = req.params.id
+  const id = req.params.id;
 
   Recipes.getRecipeIngredients(id)
     .then(recipes => {
