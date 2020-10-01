@@ -1,22 +1,19 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 module.exports = (req, res, next) => {
+  const { authorization } = req.headers;
+  const secret = process.env.JWT_SECRET;
 
-    const { authorization } = req.headers;
-    const secret = process.env.JWT_SECRET;
-
-    if (authorization) {
-        jwt.verify(authorization, secret, (err, decodedToken) => {
-            if (err) {
-                res.status(401).json({ message: 'Invalid Credentials' });
-            }
-            else {
-                req.decodedToken = decodedToken;
-                next();
-            }
-        })
-    }
-    else {
-        res.status(401).json({ error: 'Access denied.' });
-    }
-}
+  if (authorization) {
+    jwt.verify(authorization, secret, (err, decodedToken) => {
+      if (err) {
+        res.status(401).json({ message: "Invalid Credentials" });
+      } else {
+        req.decodedToken = decodedToken;
+        next();
+      }
+    });
+  } else {
+    res.status(401).json({ error: "Access denied." });
+  }
+};
