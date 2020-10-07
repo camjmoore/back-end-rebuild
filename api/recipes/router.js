@@ -69,7 +69,7 @@ router.delete("/:id", (req, res) => {
       if (del) {
         res
           .status(200)
-          .json({ success: "The recipe was successfully deleted" });
+          .json({ success: `recipe ${id} was successfully deleted` });
       } else {
         res
           .status(500)
