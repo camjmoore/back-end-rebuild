@@ -62,7 +62,9 @@ router.post("/", (req, res) => {
 
 /** DELETE REQUEST */
 router.delete("/:id", (req, res) => {
-  Recipes.deleteRecipe()
+  const id = req.params.id;
+
+  Recipes.deleteRecipe(id)
     .then((del) => {
       if (del) {
         res
