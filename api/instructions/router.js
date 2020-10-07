@@ -30,13 +30,11 @@ router.post("/", (req, res) => {
   Instructions.addInstructions(newInstr)
     .then((instr) => {
       if (instr) {
-        res
-          .status(200)
-          .json({
-            success: "The instructions were successfully added",
-            id: instr[0],
-            ...newInstr,
-          });
+        res.status(200).json({
+          success: "The instructions were successfully added",
+          id: instr[0],
+          ...newInstr,
+        });
       } else {
         res
           .status(400)
@@ -55,16 +53,14 @@ router.put("/:id", (req, res) => {
   const id = req.params.id;
   const changes = req.body;
 
-  Instructions.editInstructions(id, changes)
+  Instructions.editInstructions(changes, id)
     .then((updated) => {
       if (updated) {
-        res
-          .status(200)
-          .json({
-            success: "The instructions were successfully updated",
-            id: updated[0],
-            ...changes,
-          });
+        res.status(200).json({
+          success: "The instructions were successfully updated",
+          id: updated[0],
+          ...changes,
+        });
       } else {
         res
           .status(400)
