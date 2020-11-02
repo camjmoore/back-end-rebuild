@@ -8,7 +8,6 @@ exports.seed = async function(knex) {
     {recipe_id: 1, instructions_id: 4 },
     {recipe_id: 1, instructions_id: 5 },
     {recipe_id: 1, instructions_id: 6 },
-    {recipe_id: 1, instructions_id: 7 },
-    {recipe_id: 1, instructions_id: 8 }
+    {recipe_id: 1, instructions_id: 7 }
   ]);
 };
