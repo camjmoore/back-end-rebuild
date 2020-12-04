@@ -10,6 +10,7 @@ exports.up = function (knex) {
         .onUpdate("CASCADE")
         .onDelete("CASCADE");
     tbl.string("source", 32).nullable();
+    tbl.binary("image").nullable();
   });
 };
 

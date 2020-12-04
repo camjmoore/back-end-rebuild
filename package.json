@@ -2,6 +2,9 @@
   "name": "back-end-rebuild",
   "version": "1.0.0",
   "description": "back end rebuild for the secret family recipes group project using Node, Express, Knex, SQLite3",
+  "engines": {
+    "node": "12.x"
+  },
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
