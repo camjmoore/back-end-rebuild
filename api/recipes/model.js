@@ -37,6 +37,15 @@ function deleteRecipe(id) {
   return db("recipes").where({ id }).del();
 }
 
+/** CONSOLIDATE JOINS INTO ONE MODEL TO RETURN A RECIPES TITLE, INGREDIENTS, INSTRUCTIONS, CATEGORIZATIONS*/
+function getFullRecipe(id) {
+  return db("recipe_ingredients as ring", "recipe_instructions as rinst", "recipe_categorizations as rcats")
+  .join("recipes as r", "r.id", "ring.recipe_id")
+  .join("ingredients as ing", "ing.id", "ring.ingredients_id")
+  .where({ recipe_id: id })
+  .select("ing.*, inst.*, cats.*");
+}
+
 /**GET THE INGREDIENTS FOR A RECIPE */
 function getRecipeIngredients(id) {
   return db("recipe_ingredients as ring")
